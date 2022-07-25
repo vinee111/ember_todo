@@ -1,7 +1,18 @@
-{{page-title "Todo"}}
+<h2 class="head">shopping cart</h2>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-around;">     
+    <div>
+        <Input placeholder="enter ur item"  @value={{this.newItem}} />
+        <button type="button" {{on "click" this.addItem}}>Submit</button>
+        <ul>
+            {{#each this.shoppingList as |item index|}}
+            
+                <ShopItem @item={{item}} 
+                    @deleteItem={{fn this.deleteItem index}}
+                    @shop_arr={{this.shoppingList}}
+                    @index={{index}}
+                />
+            {{/each }}
+        </ul>
+    </div>
+</div>
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}

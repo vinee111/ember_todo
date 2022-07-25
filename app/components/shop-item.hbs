@@ -1,0 +1,33 @@
+<li>
+    {{#if this.isComplete}}
+    <strike> {{@item}} </strike>
+    <button type="button"  {{on 'click' @deleteItem }}>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    
+    {{else}}
+
+    {{#if this.isEdit}}
+    <Input @value={{@item}} />
+    <button type="button"  {{on 'click' (fn this.save @item @shop_arr @index) }}>
+        Save
+    </button>
+
+    {{else}}
+    <button type="button" class="btn-icon1" {{on 'click' this.complete}}>
+        <span class="material-symbols-outlined">check_box_outline_blank</span>
+    </button>
+
+    <span class="itemtoshop">{{@item}}</span>
+    
+    <button type="button" class="btn-icon" {{on 'click' this.editItem }}>
+        <span class="material-symbols-outlined">edit_note</span>
+    </button>
+
+    <button type="button"  {{on 'click' @deleteItem }}>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    
+    {{/if}}
+    {{/if}}
+</li>
